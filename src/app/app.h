@@ -10,7 +10,6 @@ class App {
   std::vector<Task *> task_;
   int array_size_;
   App();
-  ~App();
 
   string MakeLower(string);
 

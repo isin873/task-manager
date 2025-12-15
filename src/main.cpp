@@ -1,8 +1,15 @@
 
 #include <iostream>
+#include "app/app.h"
+#include "app/task.h"
+#include <string>
 
-int main() {
-    std::cout << "Task Manager (Codespaces) — hello, Ishani!\n";
-    std::cout << "Add your OOP modules under src/domain, src/repo, src/service, src/app.\n";
-    return 0;
+int main(){
+    App app;
+    app.AddTask("buy alexa", 10, 10);
+    app.AddTask("buy groceries", 80, 0);
+    app.AddTask("walk dog", 45, -1);
+    app.AddTask("Buy Alexa", 10, 10);
+
+    app.NewDay();
 }

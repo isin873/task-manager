@@ -23,11 +23,10 @@ string App::MakeLower(string word){
 
 void App::AddTask(string title, int duration, int days_left){
     //if there is nothing in the list 
+    Task* to_add = nullptr;
     title = MakeLower(title);
     if (array_size_ == 0){
-        Task* to_add = new Task(title, duration, days_left);
-        task_.push_back(to_add);
-        array_size_++;
+        to_add = new Task(title, duration, days_left);
     } else {
         //if there is something in the list
         for (Task* current : task_){
@@ -37,11 +36,22 @@ void App::AddTask(string title, int duration, int days_left){
             }
         }
         //if it doesn't already exist
-        Task* to_add = new Task(title, duration, days_left);
+        to_add = new Task(title, duration, days_left);
+    }
+    if (to_add != nullptr){
         task_.push_back(to_add);
         array_size_++;
+        string days = "days";
+        if (abs(days_left) == 1){
+            days = "day";
+        }
+
+        if (days_left < 0){
+            cout << title << " created - overdue by " << days_left*-1 << " " << days << endl;
+            return;
+        }
+        cout << title << " created - due in " << days_left << " " << days << endl;
     }
-    return;
 }
 
 void App::NewDay(){
@@ -97,9 +107,13 @@ void App::NewDay(){
         if (overdue == 0){
             cout << "You have no overdue tasks!"<< endl;
         } else {
-            cout << "You have " << overdue << "overdue tasks:" << endl;
+            cout << "You have " << overdue << " overdue tasks:" << endl;
             for (Task* current : overdue_list){
-                cout << current->title_<< " is overdue by " << (current->days_left_)*-1 << " days" << endl;
+                  string days = "days";
+                  if (abs(current->days_left_) == 1){
+                    days = "day";
+                  }
+        cout << current->title_<< " is overdue by " << (current->days_left_)*-1 << " " << days << endl;
             }
         }
     } return;
