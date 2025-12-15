@@ -11,8 +11,9 @@ int task_time_;
 int priority_;
 string title_;
 static int global_id;
+int days_left_;
 
-Task(string title, int task_time);
+Task(string title, int task_time, int days_left);
 
 };
 
