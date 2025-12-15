@@ -3,13 +3,16 @@
 #include <string>
 #include "task.h"
 #include <iostream>
+#include <vector>
 
 class App {
  public:
-  Task** task_;
+  std::vector<Task *> task_;
   int array_size_;
   App();
   ~App();
+
+  string MakeLower(string);
 
   void AddTask(string title, int duration, int days_left);
   void NewDay();
