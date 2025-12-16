@@ -12,4 +12,9 @@ int main(){
     app.AddTask("Buy Alexa", 10, 10);
 
     app.NewDay();
+
+    app.AddTask("ok", 10 , 0);
+    app.AddTask("no", 10, -20);
+
+    app.NewDay();
 }

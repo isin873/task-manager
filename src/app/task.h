@@ -8,7 +8,7 @@ private:
 public:
 const int task_id_;
 int task_time_;
-int priority_;
+double priority_;
 string title_;
 static int global_id;
 int days_left_;

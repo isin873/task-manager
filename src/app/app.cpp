@@ -9,6 +9,7 @@ using namespace std;
 
 App::App(){
     array_size_ = 0;
+    work_hours_ = 8.0;
 }
 
 string App::MakeLower(string word){
@@ -39,6 +40,8 @@ void App::AddTask(string title, int duration, int days_left){
         to_add = new Task(title, duration, days_left);
     }
     if (to_add != nullptr){
+        to_add->priority_ = double(duration)/((days_left)*work_hours_); //assumes 8 hours a day work
+        //creates a ratio of how long needed in hours / how long left in hours (assumes start of day)
         task_.push_back(to_add);
         array_size_++;
         string days = "days";

@@ -8,5 +8,6 @@ Task::Task(string title, int task_time, int days_left) : task_id_(global_id){
     title_ = title;
     days_left_ = days_left;
     global_id++;
+    priority_ = 0;
 
 }
