@@ -21,7 +21,7 @@ int main(){
 
     app.ShowPriority();
 
-    app.ChangeTime("walk dog", 0.5);
-    app.ChangeDays("walk dog", 2);
-    app.ChangeDays("buy groceries", -1);
+    app.ChangeTitle("buy alexa", "walk dog");
+    app.ChangeTitle("buy alexa", "mum christmas");
+    app.ChangeTitle("walk cat", "idk");
 }

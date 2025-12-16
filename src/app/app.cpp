@@ -206,3 +206,29 @@ void App::ShowPriority(){
     cout << title << " updated: " << days << plural << " left to complete." << endl;
     return;
   }
+
+  void App::ChangeTitle(string title, string new_title){
+    title = MakeLower(title);
+    new_title = MakeLower(new_title);
+    Task* to_change = nullptr;
+    Task* new_name = nullptr;
+    for (Task* current : task_){
+        if (title == current->title_){
+            to_change = current;
+        }
+        if (new_title == current->title_){
+            new_name = current;
+        }
+    }
+    if (new_name != nullptr){
+        cout << "INVALID: There is already a task called " << new_title << endl;
+        return;
+    }
+    if (to_change == nullptr){
+        cout << "INVALID: There is no current task called " << title << endl;
+        return;
+    }
+    to_change->title_ = new_title;
+    cout << "Task " << title << " has changed it's name to " << new_title << endl;
+    return;
+  }
