@@ -14,6 +14,7 @@ static int global_id;
 int days_left_;
 
 Task(string title, double task_time, int days_left);
+void ChangePriority(double work_hours);
 
 };
 

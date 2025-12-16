@@ -40,7 +40,7 @@ void App::AddTask(string title, double duration, int days_left){
         to_add = new Task(title, duration, days_left);
     }
     if (to_add != nullptr){
-        to_add->priority_ = double(duration)/((days_left)*work_hours_); //assumes 8 hours a day work
+        to_add->ChangePriority(work_hours_); //assumes 8 hours a day work
         //creates a ratio of how long needed in hours / how long left in hours (assumes start of day)
         task_.push_back(to_add);
         array_size_++;
@@ -116,13 +116,13 @@ void App::NewDay(){
                   if (abs(current->days_left_) == 1){
                     days = "day";
                   }
-        cout << current->title_<< " is overdue by " << (current->days_left_)*-1 << " " << days << endl;
+        // cout << current->title_<< " is overdue by " << (current->days_left_)*-1 << " " << days << endl; //make it cleaner
             }
         }
     } 
     //update priorities based on new dates
     for (Task* current : task_){
-        current->priority_ = current->task_time_/double((current->days_left_)*work_hours_);
+        current->ChangePriority(work_hours_);
     }
     
     return;
@@ -160,7 +160,21 @@ void App::ShowPriority(){
             }
             i++;
         }
+ }
 
-        
-
+ void App::ChangeTime(string title, int time){
+    //find task
+    Task* to_change = nullptr;
+    title = MakeLower(title);
+    for (Task* current : task_){
+        if (title == current->title_){
+            to_change = current;
+        }
+    }
+    if (to_change == nullptr){
+        cout << "INVALID: There is no task called " << title << endl;
+        return;
+    }
+    to_change->task_time_ = time;
+    to_change->ChangePriority(work_hours_);
  }
