@@ -179,3 +179,30 @@ void App::ShowPriority(){
     to_change->ChangePriority(work_hours_);
     cout << title << " updated: " << time << " hours needed to complete." << endl;
  }
+
+  void App::ChangeDays(string title, int days){
+    Task* to_change = nullptr;
+    title = MakeLower(title);
+    for (Task* current : task_){
+        if (title == current->title_){
+            to_change = current;
+        }
+    }
+    if (to_change == nullptr){
+        cout << "IMVALID: There is no task called " << title << endl;
+        return;
+    }
+    //if task there
+    to_change->days_left_ = days;
+    to_change->ChangePriority(work_hours_);
+    string plural = " days";
+    if (abs(days) == 1){
+        plural = " day";
+    }
+    if (days<0){
+        cout << title << " updated: " << days*-1 << plural << " overdue." << endl;
+        return;
+    }
+    cout << title << " updated: " << days << plural << " left to complete." << endl;
+    return;
+  }

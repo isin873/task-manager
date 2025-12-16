@@ -18,8 +18,8 @@ class App {
   void NewDay();
   void ShowPriority();
   void ChangeTime(string title, double time);
-  void ChangeDays(int days);
-  void ChangeTitle(string title);
+  void ChangeDays(string title, int days);
+  void ChangeTitle(string title, string new_title);
   void CompleteTask(string title);
   void ResetList();
 };
