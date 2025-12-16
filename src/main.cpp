@@ -17,10 +17,9 @@ int main(){
     app.ShowPriority();
 
     app.NewDay();
-    app.NewDay();
-    app.NewDay();
-    app.NewDay();
-    app.NewDay();
+ 
 
     app.ShowPriority();
+
+    app.ChangeTime("walk dog", 0.5);
 }

@@ -162,7 +162,7 @@ void App::ShowPriority(){
         }
  }
 
- void App::ChangeTime(string title, int time){
+ void App::ChangeTime(string title, double time){
     //find task
     Task* to_change = nullptr;
     title = MakeLower(title);
@@ -177,4 +177,5 @@ void App::ShowPriority(){
     }
     to_change->task_time_ = time;
     to_change->ChangePriority(work_hours_);
+    cout << title << " updated: " << time << " hours needed to complete." << endl;
  }

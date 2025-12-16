@@ -17,7 +17,7 @@ class App {
   void AddTask(string title, double duration, int days_left);
   void NewDay();
   void ShowPriority();
-  void ChangeTime(string title, int time);
+  void ChangeTime(string title, double time);
   void ChangeDays(int days);
   void ChangeTitle(string title);
   void CompleteTask(string title);
