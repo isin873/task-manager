@@ -22,7 +22,7 @@ string App::MakeLower(string word){
     return lower;
 }
 
-void App::AddTask(string title, int duration, int days_left){
+void App::AddTask(string title, double duration, int days_left){
     //if there is nothing in the list 
     Task* to_add = nullptr;
     title = MakeLower(title);
@@ -119,5 +119,48 @@ void App::NewDay(){
         cout << current->title_<< " is overdue by " << (current->days_left_)*-1 << " " << days << endl;
             }
         }
-    } return;
+    } 
+    //update priorities based on new dates
+    for (Task* current : task_){
+        current->priority_ = current->task_time_/double((current->days_left_)*work_hours_);
+    }
+    
+    return;
 }
+
+
+void App::ShowPriority(){
+    if (task_.size() == 0){
+        cout << "Task list is empty! Relax ;)" << endl;
+        return;
+    }
+
+    std::vector<Task*> sorted = task_;
+        for (int i = 1; i<array_size_; i++){
+            Task* key = sorted[i];
+            int j = i;
+            while (j > 0 && sorted[j-1]->days_left_ > key->days_left_){
+                sorted[j] = sorted[j - 1];
+                j--;
+            }
+            sorted[j] = key;
+        }
+
+        int i = 1;
+        cout << "PRIORITY LIST: You have " << array_size_ << " tasks:" << endl;
+        for (Task* current : sorted){
+            string days = " days.";
+            if (abs(current->days_left_) == 1){
+                days = " day.";
+            }
+            if (current->days_left_ < 0){
+                cout << i << ": " << current->title_ << ". Overdue by " << current->days_left_*-1 << days << endl;
+            } else {
+            cout << i << ": " << current->title_ << ". Due in " << current->days_left_ << days << endl;
+            }
+            i++;
+        }
+
+        
+
+ }

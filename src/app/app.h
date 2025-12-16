@@ -14,7 +14,7 @@ class App {
 
   string MakeLower(string);
 
-  void AddTask(string title, int duration, int days_left);
+  void AddTask(string title, double duration, int days_left);
   void NewDay();
   void ShowPriority();
   void ChangeTime(int time);

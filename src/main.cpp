@@ -6,15 +6,21 @@
 
 int main(){
     App app;
-    app.AddTask("buy alexa", 10, 10);
-    app.AddTask("buy groceries", 80, 0);
-    app.AddTask("walk dog", 45, -1);
-    app.AddTask("Buy Alexa", 10, 10);
+    app.AddTask("buy alexa", 0.1, 10); //should be very low
+    app.AddTask("buy groceries", 1.2, 0); //should be very high
+    app.AddTask("walk dog", 0.75, -1); //should be highest as overdue
+
+    app.ShowPriority();
 
     app.NewDay();
 
-    app.AddTask("ok", 10 , 0);
-    app.AddTask("no", 10, -20);
+    app.ShowPriority();
 
     app.NewDay();
+    app.NewDay();
+    app.NewDay();
+    app.NewDay();
+    app.NewDay();
+
+    app.ShowPriority();
 }
