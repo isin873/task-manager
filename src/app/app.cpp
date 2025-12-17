@@ -233,26 +233,36 @@ void App::ShowPriority(){
     return;
   }
 
-  void App::CompleteTask(string title){
-    int i = 0;
+
+void App::CompleteTask(std::string title) {
+    title = MakeLower(title);  // assuming titles are stored lowercase
+
+    int matchIndex = -1;
     Task* to_complete = nullptr;
-    title = MakeLower(title);
-    for (Task* current : task_){
-        ++i;
-        if (title == current->title_){
+
+    // Find the first matching task and its index
+    for (int idx = 0; idx < static_cast<int>(task_.size()); ++idx) {
+        Task* current = task_[idx];
+        if (title == current->title_) {
+            matchIndex = idx;
             to_complete = current;
+            break; // stop at the first match
         }
     }
-    if (to_complete == nullptr){
-        cout << "There is no task called " << title << endl;
+
+    if (matchIndex == -1) {
+        std::cout << "There is no task called " << title << std::endl;
         return;
     }
+
+    // Delete the heap allocation and erase the pointer from the vector
     delete to_complete;
-    task_.erase(task_.begin() + i);
-    array_size_--;
-    cout << title << " completed! You have " << array_size_ << " tasks remaining." << endl;
-    return;
-  }
+    task_.erase(task_.begin() + matchIndex);
+    --array_size_;
+
+    std::cout << title << " completed! You have " << array_size_
+              << " tasks remaining." << std::endl;
+}
 
   void App::ResetList(){
     array_size_ = 0;

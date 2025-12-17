@@ -18,7 +18,7 @@ public:
     static const Command NEW_DAY;          // decrement days for all tasks and report
     static const Command SHOW_PRIORITY;    // show tasks ordered by urgency
     static const Command SHOW_TASKS;       // list all tasks (optional if you implement App::ShowAll)
-    static const Command DELETE_TASK;      // delete by <TITLE> (optional if you implement App::DeleteTask)
+    static const Command COMPLETE_TASK;      // delete by <TITLE> (optional if you implement App::DeleteTask)
     static const Command HELP;             // print usage
     static const Command EXIT;             // exit application
     static const Command INVALID;          // sentinel

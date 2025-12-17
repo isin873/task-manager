@@ -39,7 +39,7 @@ namespace {
 const Command Command::ADD_TASK(
     "ADD_TASK", 3,
     "Add a task with <TITLE>, <DURATION> and <DAYS_LEFT>.",
-    {"Title (quoted if spaces)", "Duration (minutes)", "Days left (integer)"}
+    {"Title (quoted if spaces)", "Duration (HOURS)", "Days left (integer)"}
 );
 
 const Command Command::NEW_DAY(
@@ -57,9 +57,9 @@ const Command Command::SHOW_TASKS(
     "Display all tasks with details."
 );
 
-const Command Command::DELETE_TASK(
-    "DELETE_TASK", 1,
-    "Delete a task by <TITLE>.",
+const Command Command::COMPLETE_TASK(
+    "COMPLETE_TASK", 1,
+    "Complete a task by <TITLE>.",
     {"Title (quoted if spaces)"}
 );
 
@@ -73,7 +73,7 @@ std::initializer_list<Command> Command::commands = {
     Command::NEW_DAY,
     Command::SHOW_PRIORITY,
     Command::SHOW_TASKS,
-    Command::DELETE_TASK,
+    Command::COMPLETE_TASK,
     Command::HELP,
     Command::EXIT
 };
