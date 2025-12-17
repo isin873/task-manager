@@ -232,3 +232,34 @@ void App::ShowPriority(){
     cout << "Task " << title << " has changed it's name to " << new_title << endl;
     return;
   }
+
+  void App::CompleteTask(string title){
+    int i = 0;
+    Task* to_complete = nullptr;
+    title = MakeLower(title);
+    for (Task* current : task_){
+        ++i;
+        if (title == current->title_){
+            to_complete = current;
+        }
+    }
+    if (to_complete == nullptr){
+        cout << "There is no task called " << title << endl;
+        return;
+    }
+    delete to_complete;
+    task_.erase(task_.begin() + i);
+    array_size_--;
+    cout << title << " completed! You have " << array_size_ << " tasks remaining." << endl;
+    return;
+  }
+
+  void App::ResetList(){
+    array_size_ = 0;
+    for (Task* current : task_){
+        delete current;
+    }
+    task_.clear();
+    cout << "List reset: 0 tasks pending" << endl;
+    return;
+  }

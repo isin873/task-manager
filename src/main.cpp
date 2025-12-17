@@ -24,4 +24,9 @@ int main(){
     app.ChangeTitle("buy alexa", "walk dog");
     app.ChangeTitle("buy alexa", "mum christmas");
     app.ChangeTitle("walk cat", "idk");
+
+    app.CompleteTask("walk dog");
+    app.ShowPriority();
+    app.ResetList();
+    app.ShowPriority();
 }
