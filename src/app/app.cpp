@@ -110,7 +110,7 @@ void App::NewDay(){
         if (overdue == 0){
             cout << "You have no overdue tasks!"<< endl;
         } else {
-            cout << "You have " << overdue << " overdue tasks:" << endl;
+            cout << "You have " << overdue << " overdue tasks." << endl;
             for (Task* current : overdue_list){
                   string days = "days";
                   if (abs(current->days_left_) == 1){
