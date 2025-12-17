@@ -3,30 +3,16 @@
 #include "app/app.h"
 #include "app/task.h"
 #include <string>
+#include "app/launcher.h"
+#include "app/command.h"
 
-int main(){
+
+int main(int argc, char* argv[]) {
     App app;
-    app.AddTask("buy alexa", 0.1, 10); //should be very low
-    app.AddTask("buy groceries", 1.2, 0); //should be very high
-    app.AddTask("walk dog", 0.75, -1); //should be highest as overdue
+    if (argc > 1) {
+        return RunFile(app, argv[1]);   // run commands from a file
+    }
+    RunInteractive(app);                // interactive REPL
+    return 0;
 
-    app.ShowPriority();
-
-    app.NewDay();
-
-    app.ShowPriority();
-
-    app.NewDay();
- 
-
-    app.ShowPriority();
-
-    app.ChangeTitle("buy alexa", "walk dog");
-    app.ChangeTitle("buy alexa", "mum christmas");
-    app.ChangeTitle("walk cat", "idk");
-
-    app.CompleteTask("walk dog");
-    app.ShowPriority();
-    app.ResetList();
-    app.ShowPriority();
-}
+};
